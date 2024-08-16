@@ -21,6 +21,7 @@ public class R_IsInterleave_97 {
             if (dp[i - 1][0] && s2.charAt(i - 1) == s3.charAt(i - 1))
                 dp[i][0] = true;
         }
+        // "aabcc", "dbbca", "aadbbcbcac"
         for (int i = 1; i <= s1.length(); i++) {
             for (int j = 1; j <= s2.length(); j++) {
                 if(s3.charAt(i + j - 1) == s1.charAt(i - 1))

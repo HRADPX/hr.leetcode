@@ -38,6 +38,55 @@ public class X_FindClosestElements_658 {
         return res;
     }
 
+    public List<Integer> findClosestElements2(int[] arr, int k, int x) {
+
+       int right = this.binarySearch2(arr, x);
+       int left = right - 1;
+       List<Integer> res = new ArrayList<>(k);
+       while (k > 0) {
+           if (left < 0) {
+               right++;
+           } else if (right >= arr.length) {
+               left--;
+           } else if (x - arr[left] <= arr[right] - x) {
+               left--;
+           } else {
+               right++;
+           }
+           k--;
+       }
+        for (int i = left + 1; i < right; i++) {
+            res.add(arr[i]);
+        }
+       return res;
+    }
+
+    /**
+     * 二分查找，最左边界
+     */
+    public int binarySearch2(int[] nums, int target) {
+
+        int low = 0, high = nums.length - 1;
+
+        // 0 2 2 3 4
+        while (low < high) {
+            int mid = (low + high) >> 1;
+            if (nums[mid] >= target) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+
+
+    public static void main(String[] args) {
+
+        int[] nums = {1,2,3,4,5};
+        X_FindClosestElements_658 instance = ReflectUtils.getInstance(X_FindClosestElements_658.class);
+        System.out.println(instance.findClosestElements2(nums, 4, -1));
+    }
 
     // // [1,2,3,4,5], k = 4, x = 3  ==> [1,2,6,7]
     // 时间复杂度 O(log(N - K) + K)
@@ -68,12 +117,5 @@ public class X_FindClosestElements_658 {
             else low = mid + 1;
         }
         return low;
-    }
-
-    public static void main(String[] args) {
-
-        int[] nums = {1, 2, 3};
-        X_FindClosestElements_658 instance = ReflectUtils.getInstance(X_FindClosestElements_658.class);
-        System.out.println(instance.findClosestElements(nums, 2, 0));
     }
 }

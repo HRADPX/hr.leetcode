@@ -41,18 +41,16 @@ public class R_NthUglyNumber_264 {
     }
 
     public int nthUglyNumber2(int n) {
-        if (n == 1) return 1;
         int[] dp = new int[n + 1];
         dp[1] = 1;
-        int i, j, k;
-        i = j = k = 0;
-
+        int i, j, k; i = j = k = 1;
         for (int l = 2; l <= n; l++) {
-            int res = Math.min(dp[i] * 2, Math.min(dp[j] * 3, dp[k] * 5));
-            dp[l] = res;
+
+            int res = Math.min(Math.min(dp[i] * 2, dp[j] * 3), dp[k] * 5);
             if (res == dp[i] * 2) i++;
             if (res == dp[j] * 2) j++;
             if (res == dp[k] * 2) k++;
+            dp[l] = res;
         }
         return dp[n];
     }

@@ -33,9 +33,33 @@ public class Permute_46 {
         }
     }
 
+    public List<Integer> permute(int[] nums, int k) {
+        List<Integer> res = new ArrayList<>();
+        this.backtrace(res, nums, 0, new boolean[nums.length], k);
+        return res;
+    }
+
+    private void backtrace(List<Integer> res, int[] nums, int num, boolean[] flag, int k) {
+
+        if (k == 0) {
+            res.add(num);
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (flag[i]) continue;
+            num = num * 10 + nums[i];
+            flag[i] = true;
+            this.backtrace(res, nums, num, flag, k - 1);
+            num = (num - nums[i]) / 10;
+            flag[i] = false;
+        }
+    }
+
     public static void main(String[] args) {
 
         Permute_46 instance = ReflectUtils.getInstance(Permute_46.class);
-        System.out.println(instance.permute(new int[] {1, 2, 3}));
+        List<Integer> permuteList = instance.permute(new int[]{1, 2, 3, 4}, 3);
+        System.out.println(permuteList);
+        System.out.println(permuteList.size());
     }
 }

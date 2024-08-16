@@ -1,4 +1,4 @@
-package com.hr.list;
+package com.hr.nums;
 
 import java.util.Arrays;
 

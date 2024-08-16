@@ -1,12 +1,14 @@
 package com.hr.double_pos;
 
 import com.hr.list.ListNode;
+import com.hr.list.ListNodeUtils;
+import com.hr.utils.ReflectUtils;
 
 /**
  * @author huangran <huangran@kuaishou.com>
  * Created on 2024-03-12
  *
- * 从为排序的链表中移除重复的数据，链表的值不超过 105
+ * 从未排序的链表中移除重复的数据，链表的值不超过 105
  */
 public class DeleteDuplicateNode_1836 {
 

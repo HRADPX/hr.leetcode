@@ -1,6 +1,7 @@
 package com.hr.list;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -9,6 +10,7 @@ import com.hr.utils.ReflectUtils;
 /**
  * @author huangran <huangran@kuaishou.com>
  * Created on 2024-03-08
+ * 这个解法现在过不了所有测试用例了，超时...
  *
  */
 public class R_KSmallestPairs_373 {

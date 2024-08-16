@@ -10,6 +10,81 @@ import com.hr.utils.ReflectUtils;
  */
 public class ReverseBetween_92 {
 
+    public ListNode reverseBetween2(ListNode head, int left, int right) {
+        if (head == null || head.next == null || left == right) {
+            return head;
+        }
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode p = dummy;
+        ListNode front, after;
+        int i = 0;
+        while (i < left - 1) {
+            p = p.next;
+            i++;
+        }
+        front = p;
+        while (i < right) {
+            p = p.next;
+            i++;
+        }
+        ListNode end = p;
+        ListNode pre = end.next;
+        after = end.next;
+        p = front.next;
+
+        // 0 1, [2, 3, 4], 5, 6
+        //   pre       end
+        while (p != after) {
+            ListNode next = p.next;
+            p.next = pre;
+            pre = p;
+            p = next;
+        }
+        front.next = end;
+        return dummy.next;
+    }
+
+    public ListNode reverseBetween3(ListNode head, int left, int right) {
+        if (head == null || head.next == null || left == right) {
+            return head;
+        }
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode p = dummy;
+        ListNode front;
+        int i = 0;
+        while (i < left - 1) {
+            p = p.next;
+            i++;
+        }
+        front = p;
+        while (i < right) {
+            p = p.next;
+            i++;
+        }
+        front.next = reverse(front.next, p.next);;
+        return dummy.next;
+    }
+
+    // 1 2 3 4
+    private ListNode reverse(ListNode start, ListNode end) {
+        if (start == end) {
+            return start;
+        }
+        ListNode pre = null;
+        ListNode p = start;
+
+        while (p != end) {
+            ListNode next = p.next;
+            p.next = pre;
+            pre = p;
+            p = next;
+        }
+        start.next = end;
+        return pre;
+    }
+
     public ListNode reverseBetweenV1(ListNode head, int left, int right) {
         if (head == null || head.next == null || left == right) return head;
         ListNode dummy = new ListNode();
@@ -80,7 +155,7 @@ public class ReverseBetween_92 {
     public static void main(String[] args) {
 
         ListNode head = ListNodeUtils.buildListNode(Arrays.asList(1, 2, 3, 4, 5, 6));
-        ListNode res = ReflectUtils.getInstance(ReverseBetween_92.class).reverseBetween(head, 2, 4);
+        ListNode res = ReflectUtils.getInstance(ReverseBetween_92.class).reverseBetween3(head, 1, 4);
         System.out.println(ListNodeUtils.traversalList(res));
 
     }

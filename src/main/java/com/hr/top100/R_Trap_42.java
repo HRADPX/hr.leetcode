@@ -43,7 +43,7 @@ public class R_Trap_42 {
 
     // 单调栈
     public int trap(int[] height) {
-        if (height.length <= 1) return 0;
+        if (height.length <= 2) return 0;
         
         int[] stack = new int[height.length];
         stack[0] = -1;

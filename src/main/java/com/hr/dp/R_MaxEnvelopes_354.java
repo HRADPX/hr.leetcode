@@ -7,6 +7,10 @@ import com.hr.utils.ReflectUtils;
 /**
  * @author huangran <huangran@kuaishou.com>
  * Created on 2024-04-07
+ *
+ * 最长子序列的二维展开
+ * 按照第一个元素升序排序，对第二个元素降序排序，然后找到第二个元素的最长递增子序列
+ * {1,8},{2,3},{5,4},{5,2},{6,7},{6,4}
  */
 public class R_MaxEnvelopes_354 {
 

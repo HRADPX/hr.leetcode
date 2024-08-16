@@ -44,18 +44,6 @@ public class SortColors_75 {
                 ++index;
             }
         }
-
-        while (index <= high) {
-            if (nums[index] == 2) {
-                nums[index] = nums[high];
-                nums[high--] = 2;
-            } else if (nums[index] == 0) {
-                nums[index++] = nums[low];
-                nums[low++] = 0;
-            } else {
-                ++index;
-            }
-        }
     }
 
     public static void main(String[] args) {

@@ -33,6 +33,32 @@ public class IsPalindrome_234 {
         return true;
     }
 
+    // 1 2 3 2 1
+    public boolean isPalindrome2(ListNode head) {
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        ListNode slow, fast, pre;
+        slow = fast = head; pre = null;
+        while (fast != null && fast.next != null) {
+            pre = slow;
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        if (pre != null) pre.next = null; // 断开链表, 后面的可能会多一个
+        slow = convert(slow);
+        fast = head;
+        while (slow != null && fast != null) {
+            if (slow.val != fast.val) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return true;
+    }
+
     private ListNode convert(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode pre, p; p = head; pre = null;

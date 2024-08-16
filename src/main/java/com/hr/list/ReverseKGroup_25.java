@@ -10,6 +10,48 @@ import com.hr.utils.ReflectUtils;
  */
 public class ReverseKGroup_25 {
 
+    // 迭代实现
+    public ListNode reverseKGroup2(ListNode head, int k) {
+
+        if(head == null || head.next == null || k <= 1) return head;
+        ListNode dummy = new ListNode(0);
+        ListNode p = dummy, cur;
+        dummy.next = head;
+
+        while (true) {
+
+            int i = 1;
+            cur = p.next;
+            ListNode curHead = cur;
+            while (i < k && cur != null) {
+                cur = cur.next;
+                i++;
+            }
+            if (cur == null) break;
+            ListNode nextHead = cur.next;
+            cur.next = null;
+            p.next = revese(curHead);
+            p = curHead;
+            p.next = nextHead;
+        }
+        return dummy.next;
+    }
+
+    private ListNode revese(ListNode head){
+
+        if(head == null || head.next == null) return head;
+        ListNode cur = head, pre = null;
+        while(cur != null){
+
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
+    // 递归实现
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null || k <= 1) return head;
 

@@ -1,5 +1,7 @@
 package com.hr.list;
 
+import com.hr.utils.ReflectUtils;
+
 /**
  * @author huangran <huangran@kuaishou.com>
  * Created on 2024-03-07
@@ -38,4 +40,33 @@ public class SS_RemoveNthFromEnd_19 {
         slow.next = slow.next.next;
         return dummy.next;
     }
+
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+
+        if (n <= 0 || head == null) {
+            return head;
+        }
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode fast = head;
+        // 0 [1 2 3 4 5]
+        for (int i = 0; i < n; i++) {
+            fast = fast.next;
+        }
+        ListNode slow = dummy;
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return dummy.next;
+    }
+
+    public static void main(String[] args){
+
+        ListNode head = ListNodeUtils.buildListNode(1, 2, 3, 4, 5);
+        SS_RemoveNthFromEnd_19 instance = ReflectUtils.getInstance(SS_RemoveNthFromEnd_19.class);
+        System.out.println(ListNodeUtils.traversalList(instance.removeNthFromEnd2(head, 5)));
+    }
+
 }

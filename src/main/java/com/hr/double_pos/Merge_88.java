@@ -17,7 +17,7 @@ public class Merge_88 {
             else
                 nums1[k--] = nums2[j--];
         }
-        if (i >= 0) nums1[k--] = nums1[i--];
-        if (j >= 0) nums1[k--] = nums1[j--];
+        while (i >= 0) nums1[k--] = nums1[i--];
+        while (j >= 0) nums1[k--] = nums1[j--];
     }
 }

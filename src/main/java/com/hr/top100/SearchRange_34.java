@@ -47,6 +47,8 @@ public class SearchRange_34 {
     public static void main(String[] args) {
         int[] nums = new int[] {1,2,2,4,5};
         SearchRange_34 instance = ReflectUtils.getInstance(SearchRange_34.class);
+        System.out.println(instance.searchRange2(nums, 2, true));
+        System.out.println(instance.searchRange2(nums, 2, false));
         System.out.println(Arrays.toString(instance.searchRange(nums, 2)));
     }
 }

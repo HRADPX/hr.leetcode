@@ -3,6 +3,10 @@ package com.hr.list;
 /**
  * @author huangran <huangran@kuaishou.com>
  * Created on 2024-03-07
+ * 考虑一题多解
+ * 1.遍历即可
+ * 2.让两个链表到末尾的长度相等
+ * 3.如果两个链表有相交，让链表首尾相连一定形成一个环，判断环的入口即可。
  */
 public class GetIntersectionNode_160 {
 
